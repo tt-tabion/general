@@ -1,0 +1,14 @@
+get access to github
+get access to correct repositories
+
+https://tradingtech.atlassian.net/wiki/display/SDLC/Github+-+how+to
+
+create ssh key
+ssh-keygen -t rsa -C "anthony.tabion@tradingtechnologies.com"
+git clone repository
+git submodule init
+git submodule update
+
+Setup TT specific libraries and applications
+curl -L http://192.168.254.16/chef/dev/install.sh | sudo bash -s -- -d -s -u <your_intad_username>
+
