@@ -1,0 +1,20 @@
+VM dns name to IP = 10.192.X.Y glaXvmY
+
+Generate a new configuration:
+  * go to https://darwin-int-dev-cert.trade.tt
+  
+  * SRL config found at edgeserver
+    + scp root@10.192.0.45:/etc/debesys/srl_config_mdsub.xml .
+    + fields to modify
+      - remove all resources not required
+      - remove xhost= or add current host's IP address
+      - set client-type="tunnel"
+      - remove multicast information under MDLineHandler
+
+  * PDS config found from MDS or PDS hosts 
+    + scp root@10.192.0.33:/etc/debesys/pds_collector_config-d.conf .
+      - disable the perform-update (ensure you don't erase/corrupt sim data)
+      - update path to srl files
+      - disable the repo-file and pid-file to speed up download
+      
+    
