@@ -1,0 +1,9 @@
+# TT WORKFLOW
+git checkout develop
+git remote prune origin
+git fetch
+git merge origin/develop
+git pull
+git submodule update
+
+git log origin/develop

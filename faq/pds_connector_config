@@ -18,3 +18,4 @@ Generate a new configuration:
       - disable the repo-file and pid-file to speed up download
       
     
+use mdsub to verify config and connections
