@@ -2,10 +2,32 @@
 
 deploy/cef/scripts
 
+JENKINS_TOKEN=e54f60799e1bb861fd064122e5c12adf
+JENKINS_USER=anthony.tabion@tradingtechnologies.com
+
 * get commit from origin
   log --abbrev-commit --decorate=short
 
 * request build from jenkins
   ./run python deploy/chef/scripts/request_build.py -r [HASH] -t all_md -a -v
-  ./run python deploy/chef/scripts/bump_cookbook_version.py -c pds_collector -r [HASH] -q
-  ./run python deploy/chef/scripts/request_deploy -r "REASON" -c int-dev-md-sp int_dev_md_pp -d 5 -a
+
+# make sure you have a clean repo (no modifications)
+  git checkout develop
+  git pull
+  git update submodule
+  ./run python deploy/chef/scripts/bump_cookbook_version.py -c pds_collector -r [HASH] -g
+
+  ./run python deploy/chef/scripts/request_deploy -r "REASON" -e int-dev-md-sp int_dev_md_pp -d 5 -a
+
+# only update one box.
+# log on
+chef-client
+
+
+
+
+#important chef dirs
+/var/log/debesys
+/opt/debsys/pdf_cfe
+ - find commit in use (debesys-, ext-)
+ 

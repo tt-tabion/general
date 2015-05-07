@@ -1,0 +1,39 @@
+checkout on release/current
+
+how to send a pull reqeuest to the proper branch
+i.e. default is
+    tt-tabion  wants to merge 1 commit into develop from release/DEB-20090
+should be 1 commit into release/current
+
+
+git checkout release
+git pull
+git submodule udpate
+
+
+schedule a build from release/current and develop
+
+bump cookbook for release/
+bump cookgbook -g to run auto
+
+
+
+ 1226  git submodule update
+ 1227  git status
+ 1228  git checkout release/current
+ 1229  git pull
+ 1230  git submodule update
+ 1231  git branch
+ 1232  git checkout -b release/DEB-20090.merge
+ 1233  git checkout release/current
+ 1234  git pull
+ 1235  git merge release/DEB-20090
+ 1236  git push origin release/current
+ 1237  git checkout develop
+ 1238  git pull
+ 1239  git submodule update
+ 1240  git merge release/current
+ 1241  git push origin develop
+
+ 1267  ./run python deploy/chef/scripts/request_build.py -r 4b1b131 -a -v --no-upload --email anthony.tabion@tradingtechnologies.com --token WSJPXBMTDPZCOGAQJTBQKP40VEJVKJVWXIDNMKQMFZW=
+ 
