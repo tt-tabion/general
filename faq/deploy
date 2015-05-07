@@ -20,13 +20,15 @@ JENKINS_USER=anthony.tabion@tradingtechnologies.com
   git update submodule
   ./run python deploy/chef/scripts/bump_cookbook_version.py -c pds_collector -r [HASH] -g
 
-  ./run python deploy/chef/scripts/request_deploy -r "REASON" -e int-dev-md-sp int_dev_md_pp -d 5 -a
-
+# deploy on all environments
+  ./run python deploy/chef/scripts/request_deploy.py -r "REASON" -e int-dev-md-sp int-dev-md-pp -d 5 -a
+     or int-prod-md-pp or something else *stage*
 # only update one box.
 # log on
 chef-client
 
-
+://darwin-int-stage-sim.trade.tt/#
+release darwin: https://darwin-int-stage-sim.trade.tt/#
 
 
 #important chef dirs
