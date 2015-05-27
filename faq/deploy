@@ -10,8 +10,8 @@ JENKINS_USER=anthony.tabion@tradingtechnologies.com
 
 * request build from jenkins
   ./run python deploy/chef/scripts/request_build.py -r [HASH] -t all_md -a -v
-  ./run python deploy/chef/scripts/bump_cookbook_version.py -c pds_collector -r [HASH] -q
-  ./run python deploy/chef/scripts/request_deploy -r "REASON" -c int-dev-md-sp int_dev_md_pp -d 5 -a
+  ./run python deploy/chef/scripts/bump_cookbook_version.py -c pds_collector -r [HASH] -g
+  ./run python deploy/chef/scripts/request_deploy.poy -r "REASON" -e int-dev-md-sp int-dev-md-pp -d 5 -a
 
 
 # make sure you have a clean repo (no modifications)
