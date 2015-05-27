@@ -9,10 +9,18 @@ JENKINS_USER=anthony.tabion@tradingtechnologies.com
   log --abbrev-commit --decorate=short
 
 * request build from jenkins
+# PDS CONNECTOR
   ./run python deploy/chef/scripts/request_build.py -r [HASH] -t all_md -a -v
-  ./run python deploy/chef/scripts/bump_cookbook_version.py -c pds_collector -r [HASH] -q
-  ./run python deploy/chef/scripts/request_deploy -r "REASON" -c int-dev-md-sp int_dev_md_pp -d 5 -a
+# EDGESERVER
+  ./run python deploy/chef/scripts/request_build.py -r [HASH] -t all_edge -a -v
 
+# PDS CONNECTOR
+  ./run python deploy/chef/scripts/bump_cookbook_version.py -c pds_collector -r [HASH] -g
+  ./run python deploy/chef/scripts/request_deploy -r "REASON" -e int-dev-md-sp int-dev-md-pp -d 5 -a
+# EDGESERVER
+  ./run python deploy/chef/scripts/bump_cookbook_version.py -c edgeserver -r [HASH] -g
+  ./run python deploy/chef/scripts/request_deploy -r "REASON" -e int-dev-sim int-dev-cert -d 5 -a
+  ./run python deploy/chef/scripts/request_deploy -r "update to latest edgeserver commit" -e int-dev-sim int-dev-cert -d 5 -a
 
 # make sure you have a clean repo (no modifications)
   git checkout develop
@@ -36,3 +44,7 @@ release darwin: https://darwin-int-stage-sim.trade.tt/#
 /opt/debsys/pdf_cfe
  - find commit in use (debesys-, ext-)
  
+# add new exchange
+update vlan settings
+[atabion@gla2vm45:~/src/debesys (develop)]$ knife node edit gla1vm90
+add exhcange and recipes
